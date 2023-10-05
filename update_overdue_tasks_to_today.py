@@ -2,10 +2,7 @@ from todoist_api_python.api import TodoistAPI
 from dotenv import load_dotenv
 from datetime import datetime
 
-import json
 import requests
-import subprocess
-import sys
 import os
 import pprint
 
