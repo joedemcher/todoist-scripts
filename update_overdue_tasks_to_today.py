@@ -10,6 +10,10 @@ load_dotenv()
 
 TODOIST_TOKEN = os.getenv("TODOIST_TOKEN", "")
 
+if TODOIST_TOKEN == "":
+    print("Token could not be found.")
+    exit()
+
 class Todoist:
     def __init__(self, token):
         self.api = TodoistAPI(token)
@@ -62,6 +66,7 @@ def main():
     todoist = Todoist(TODOIST_TOKEN)
     try:
         overdue_tasks = todoist.get_filtered_tasks("overdue")
+        print(overdue_tasks)
         if len(overdue_tasks) != 0:
             todoist.update_tasks_to_today(overdue_tasks)
             todoist.send_notification("Tasks successfully moved", "Yesterday's tasks have been moved to today.", "low", "pushpin")
