@@ -4,7 +4,6 @@ from datetime import datetime
 
 import requests
 import os
-import pprint
 
 load_dotenv()
 
@@ -69,7 +68,7 @@ def main():
         print(overdue_tasks)
         if len(overdue_tasks) != 0:
             todoist.update_tasks_to_today(overdue_tasks)
-            todoist.send_notification("Tasks successfully moved", "Yesterday's tasks have been moved to today.", "low", "pushpin")
+            # todoist.send_notification("Tasks successfully moved", "Yesterday's tasks have been moved to today.", "low", "pushpin")
     except Exception as error:
         todoist.send_notification("Tasks could not be moved", "Yesterday's tasks have not been moved to today.", "high", "no_entry_sign")
         print(error)
